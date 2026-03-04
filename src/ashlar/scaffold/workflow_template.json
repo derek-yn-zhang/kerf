@@ -1,0 +1,6 @@
+{
+  "task_type": null,
+  "schema_path": null,
+  "tool_chain": [],
+  "fallback": "retry"
+}

@@ -1,0 +1,13 @@
+{
+  "task_type": "classification",
+  "template_params": {
+    "categories": "bug, feature_request, question, documentation"
+  },
+  "tool_chain": [
+    {
+      "tool": "normalize_text",
+      "condition": "always_true"
+    }
+  ],
+  "fallback": "flag"
+}

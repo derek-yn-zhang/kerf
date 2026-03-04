@@ -1,0 +1,10 @@
+{
+  "task_type": "summarization",
+  "tool_chain": [
+    {
+      "tool": "normalize_text",
+      "condition": "always_true"
+    }
+  ],
+  "fallback": "retry"
+}

@@ -1,0 +1,55 @@
+site_name: Ashlar
+site_description: Declarative workflow engine for Claude CLI
+repo_url: https://github.com/yourusername/ashlar
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: custom
+    accent: custom
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+    - content.tabs.link
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Quickstart: getting-started/quickstart.md
+    - Project Structure: getting-started/project-structure.md
+  - Guides:
+    - Writing Workflows: guides/workflows.md
+    - Writing Tools: guides/tools.md
+    - Using MCP Servers: guides/mcp.md
+    - Using the API Server: guides/server.md
+    - Reading Logs: guides/logs.md
+  - Concepts:
+    - How the Engine Works: concepts/engine.md
+    - Fallback Policies: concepts/fallback-policies.md
+    - Design Decisions: concepts/design-decisions.md
+  - Reference:
+    - CLI Commands: reference/cli.md
+    - Workflow Format: reference/workflow-format.md
+    - Tool API: reference/tool-api.md
+    - Built-ins: reference/builtins.md
+    - Configuration: reference/configuration.md
+    - Server API: reference/server-api.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - admonition
+  - tables
+  - attr_list
