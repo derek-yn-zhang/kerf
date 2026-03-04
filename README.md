@@ -3,6 +3,12 @@
   Declarative workflow engine for Claude CLI
 </p>
 
+<p align="center">
+  <a href="https://pypi.org/project/kerf/"><img src="https://img.shields.io/pypi/v/kerf" alt="PyPI"></a>
+  <a href="https://pypi.org/project/kerf/"><img src="https://img.shields.io/pypi/pyversions/kerf" alt="Python"></a>
+  <a href="https://github.com/derek-yn-zhang/kerf/blob/main/LICENSE"><img src="https://img.shields.io/pypi/l/kerf" alt="License"></a>
+</p>
+
 ---
 
 Kerf runs deterministic tools first, calls the LLM only when you need reasoning, and logs every result. Pipelines are defined as JSON — no Python required to configure a workflow.
@@ -64,10 +70,3 @@ def register(manager):
     manager.register_tool("uppercase", uppercase)
 ```
 
-## Documentation
-
-Full docs at [derek-yn-zhang.github.io/kerf](https://derek-yn-zhang.github.io/kerf/).
-
-## License
-
-MIT
