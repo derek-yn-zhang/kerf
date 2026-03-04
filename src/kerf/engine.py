@@ -59,7 +59,10 @@ def execute_workflow(
 
     # Step 1: deterministic preprocessing
     logger.debug("Running tool chain: %s", [s["tool"] for s in tool_chain])
-    processed_input = manager.run_tool_chain(input_data, tool_chain)
+    processed_input = manager.run_tool_chain(
+        input_data, tool_chain,
+        context={"input": input_data, "last_output": input_data},
+    )
 
     # Step 2: optional LLM reasoning
     mcp_config_path = paths["mcp"]
