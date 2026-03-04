@@ -95,3 +95,51 @@ kerf logs [--last N] [--workflow NAME]
 |---|---|---|
 | `--last` | `10` | Number of recent logs to show |
 | `--workflow` | — | Filter by workflow name |
+
+## `kerf stats`
+
+Show aggregated execution statistics.
+
+```bash
+kerf stats [--workflow NAME] [--json]
+```
+
+| Option | Default | Description |
+|---|---|---|
+| `--workflow` | — | Filter by workflow name |
+| `--json` | — | Output raw JSON instead of formatted text |
+
+```bash
+kerf stats
+```
+
+```
+Total runs: 42
+
+Workflows:
+  summarize: 25
+  clean: 17
+
+LLM runs: 25
+Tool-only runs: 17
+Fallback triggered: 3 (7.1%)
+Errors: 1
+Success rate: 97.6%
+```
+
+```bash
+kerf stats --json
+```
+
+```json
+{
+  "total_runs": 42,
+  "workflows": {"summarize": 25, "clean": 17},
+  "llm_runs": 25,
+  "tool_only_runs": 17,
+  "fallback_triggered": 3,
+  "fallback_rate": 0.071,
+  "error_count": 1,
+  "success_rate": 0.976
+}
+```

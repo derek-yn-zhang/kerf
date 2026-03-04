@@ -226,3 +226,34 @@ def list_resources():
             click.echo("  (none)")
     else:
         click.echo("  (no tools/ directory)")
+
+
+@cli.command()
+@click.option("--workflow", "wf_filter", default=None, help="Filter by workflow name")
+@click.option("--json", "as_json", is_flag=True, help="Output raw JSON")
+def stats(wf_filter, as_json):
+    """Show aggregated execution statistics."""
+    from kerf.stats import aggregate, collect_logs
+
+    project_dir = find_project_root()
+    paths = get_project_paths(project_dir)
+    entries = collect_logs(paths["logs"], workflow_filter=wf_filter)
+    result = aggregate(entries)
+
+    if as_json:
+        click.echo(json.dumps(result, indent=2))
+        return
+
+    click.echo(f"Total runs: {result['total_runs']}")
+    if result["total_runs"] == 0:
+        return
+
+    click.echo(f"\nWorkflows:")
+    for name, count in result["workflows"].items():
+        click.echo(f"  {name}: {count}")
+
+    click.echo(f"\nLLM runs: {result['llm_runs']}")
+    click.echo(f"Tool-only runs: {result['tool_only_runs']}")
+    click.echo(f"Fallback triggered: {result['fallback_triggered']} ({result['fallback_rate']:.1%})")
+    click.echo(f"Errors: {result['error_count']}")
+    click.echo(f"Success rate: {result['success_rate']:.1%}")
