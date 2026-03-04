@@ -51,6 +51,6 @@ Manage entries with `kerf add mcp <name>`. See [Using MCP Servers](../guides/mcp
 
 ## Project detection
 
-Kerf finds your project root by walking up from the current directory looking for a `.kerf` marker file. This works the same way git finds `.git/` — you can run `kerf` commands from any subdirectory.
+Kerf finds your project root by walking up from the current directory looking for a `.kerf` marker file. This works the same way git finds `.git/`, so you can run `kerf` commands from any subdirectory.
 
 If no `.kerf` file is found, Kerf uses the current directory as the project root.

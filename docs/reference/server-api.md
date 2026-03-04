@@ -18,8 +18,8 @@ Execute a workflow.
 
 | Field | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `workflow_name` | string | yes | — | Name matching `workflows/<name>.json` |
-| `input_data` | string | yes | — | Input text |
+| `workflow_name` | string | yes | - | Name matching `workflows/<name>.json` |
+| `input_data` | string | yes | - | Input text |
 | `fallback_enabled` | boolean | no | `true` | Whether to apply fallback policies |
 
 ### Response (200)

@@ -1,6 +1,6 @@
 # Writing Workflows
 
-Workflows are JSON files in `workflows/`. Each one defines a pipeline — what tools to run, whether to call the LLM, and what to do if it fails.
+Workflows are JSON files in `workflows/`. Each one defines a pipeline: what tools to run, whether to call the LLM, and what to do if it fails.
 
 ## Create a workflow
 
@@ -34,7 +34,7 @@ This creates a template you can edit:
 }
 ```
 
-The `template_params` fill in the prompt template — here, `{categories}` gets replaced with the list of categories. This normalizes the input, sends it to Claude for classification, and flags failures for review.
+The `template_params` fill in the prompt template. Here, `{categories}` gets replaced with the list of categories. This normalizes the input, sends it to Claude for classification, and flags failures for review.
 
 Run it:
 
@@ -48,6 +48,24 @@ kerf run classify "urgent: server is down and customers can't log in"
   "confidence": "high"
 }
 ```
+
+## Example: multi-step digest
+
+The `digest` workflow chains conditional tools before calling the LLM:
+
+```json
+{
+  "task_type": "summarization",
+  "tool_chain": [
+    { "tool": "strip_html", "condition": "has_html" },
+    { "tool": "normalize_text", "condition": "always_true" },
+    { "tool": "truncate", "condition": "has_long_input", "params": { "max_length": 2000 } }
+  ],
+  "fallback": "deterministic"
+}
+```
+
+HTML gets stripped only if detected, whitespace is always normalized, and long input is truncated before the LLM sees it. If the LLM fails, the preprocessed text is returned as-is.
 
 ## Tool-chain-only workflows
 

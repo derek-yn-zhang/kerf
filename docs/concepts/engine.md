@@ -26,20 +26,20 @@ result (LLM output or tool output)
 ```
 
 1. Load workflow config from `workflows/<name>.json`
-2. Set up the tool manager — register builtins, then load user tools from `tools/`
+2. Set up the tool manager: register builtins, then load user tools from `tools/`
 3. Run the deterministic tool chain on the input
 4. If `task_type` is set, construct a prompt and call the LLM via Claude CLI
-5. If a `schema_path` is set, validate the LLM output — check that all required keys are present
+5. If a `schema_path` is set, validate the LLM output. Check that all required keys are present
 6. On validation failure, apply the fallback policy
 7. Log the full result to `logs/<uuid>.json`
 
 ## Components
 
-**GARInterface** wraps the Claude CLI's headless mode (GAR = Generate, Analyze, Return). It checks that `claude` is on your PATH, calls `claude -p <prompt> --output-format json`, and parses the JSON response. Claude CLI handles its own authentication — Kerf doesn't manage credentials.
+**GARInterface** wraps the Claude CLI's headless mode (GAR = Generate, Analyze, Return). It checks that `claude` is on your PATH, calls `claude -p <prompt> --output-format json`, and parses the JSON response. Claude CLI handles its own authentication. Kerf doesn't manage credentials.
 
 **LocalToolManager** is a registry for deterministic tools and named conditions. Tools and conditions are registered by name (strings), not as lambdas. The workflow JSON references these names, and the manager resolves them at runtime. This is what keeps workflows fully serializable.
 
-**Engine** is the `execute_workflow()` function that ties it together. Both `kerf run` and `POST /execute` call the same function — there's no separate CLI vs server path.
+**Engine** is the `execute_workflow()` function that ties it together. Both `kerf run` and `POST /execute` call the same function. There's no separate CLI vs server path.
 
 ## Tool resolution order
 

@@ -25,11 +25,11 @@ mkdir my-pipeline && cd my-pipeline
 kerf init
 ```
 
-This creates the standard project structure with three example workflows. See [Project Structure](project-structure.md) for details.
+This creates the standard project structure with example workflows. See [Project Structure](project-structure.md) for details.
 
 ## Run the example workflows
 
-The scaffolded project includes `summarize`, `classify`, and `extract` workflows:
+The scaffolded project includes `summarize`, `classify`, `extract`, `clean`, and `digest` workflows:
 
 ```bash
 kerf run summarize "The quarterly earnings report showed revenue growth of 15%, driven by enterprise expansion and strong retention."
@@ -65,6 +65,18 @@ kerf run extract "Hi, I'm Sarah Chen (sarah@acme.co), VP of Engineering at Acme 
 }
 ```
 
+The `digest` workflow chains multiple tools before calling the LLM, stripping HTML, normalizing whitespace, and truncating long input before summarizing:
+
+```bash
+kerf run digest "<div><h2>Mantis Shrimp</h2><p>Mantis shrimp are   carnivorous marine crustaceans   of the order <em>Stomatopoda</em>,   branching off from other crustaceans   around <strong>400 million years ago</strong>.   Their raptorial claws   can accelerate   at a rate comparable to   a .22 caliber bullet,   delivering around   1,500 newtons of force   per strike.</p><p>They are thought   to have   the most complex eyes   in the animal kingdom,   perceiving wavelengths   from deep ultraviolet   to far-red   with up to   16 distinct photoreceptors.</p></div>"
+```
+
+```json
+{
+  "summary": "Mantis shrimp are 400-million-year-old marine crustaceans with bullet-fast claws delivering 1,500 newtons of force and the most complex eyes in the animal kingdom, with 16 photoreceptors spanning ultraviolet to far-red."
+}
+```
+
 You can also pipe input from stdin:
 
 ```bash
@@ -91,11 +103,11 @@ kerf logs --last 1
 }
 ```
 
-Every execution is logged with a UUID filename in `logs/`. The user-facing output is just the `result` — the log captures the full pipeline breakdown for debugging and pattern extraction.
+Every execution is logged with a UUID filename in `logs/`. The user-facing output is just the `result`. The log captures the full pipeline breakdown for debugging and pattern extraction.
 
 ## What's next
 
-- [Writing Workflows](../guides/workflows.md) — create your own pipelines
-- [Writing Tools](../guides/tools.md) — add custom preprocessing steps
-- [Reading Logs](../guides/logs.md) — audit execution results and extract patterns
-- [Using the API Server](../guides/server.md) — run workflows over HTTP
+- [Writing Workflows](../guides/workflows.md): create your own pipelines
+- [Writing Tools](../guides/tools.md): add custom preprocessing steps
+- [Reading Logs](../guides/logs.md): audit execution results and extract patterns
+- [Using the API Server](../guides/server.md): run workflows over HTTP

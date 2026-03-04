@@ -56,4 +56,4 @@ If the workflow doesn't exist, you get a 404:
 
 Use `kerf serve` when you want to call workflows from other services, integrate with existing APIs, or run workflows from non-Python code. Use `kerf run` for scripting, testing, and one-off executions.
 
-Both call the same engine — results are identical.
+Both call the same engine. Results are identical.

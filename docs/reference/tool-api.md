@@ -10,7 +10,7 @@ def my_tool(input_data: Any, params: dict) -> Any:
 |---|---|
 | `input_data` | Output of the previous step, or raw input for the first step |
 | `params` | Dict from the workflow step's `params` field |
-| Return | Processed data — becomes `input_data` for the next step |
+| Return | Processed data, becomes `input_data` for the next step |
 
 ## Condition function
 
@@ -43,7 +43,7 @@ Register a condition function under the given name.
 
 ### `manager.run_tool_chain(input_data, chain, context=None)`
 
-Execute a sequence of tool steps. Called internally by the engine — you generally don't call this directly.
+Execute a sequence of tool steps. Called internally by the engine. You generally don't call this directly.
 
 ### `manager.load_project_tools(tools_dir)`
 
@@ -54,7 +54,7 @@ Discover and load all tool files from a directory. Called internally by the engi
 - Scans `tools/` for `.py` files
 - Files starting with `_` are skipped
 - Files without a `register` function are warned and skipped
-- Files with import errors or exceptions during loading are logged and skipped — one bad file doesn't break everything
+- Files with import errors or exceptions during loading are logged and skipped. One bad file doesn't break everything
 - Built-in tools load first, then user tools
 - User tools can override builtins by registering the same name (logged as a warning)
 

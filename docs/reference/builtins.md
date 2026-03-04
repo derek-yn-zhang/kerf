@@ -26,8 +26,8 @@ route_by_length("short text", {
 | Param | Type | Default | Description |
 |---|---|---|---|
 | `threshold` | int | `500` | Character count cutoff |
-| `routes.short_text` | string | — | Workflow name for short input |
-| `routes.long_text` | string | — | Workflow name for long input |
+| `routes.short_text` | string | - | Workflow name for short input |
+| `routes.long_text` | string | - | Workflow name for long input |
 
 ### `strip_html`
 

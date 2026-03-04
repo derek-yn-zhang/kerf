@@ -1,0 +1,9 @@
+{
+  "task_type": "summarization",
+  "tool_chain": [
+    { "tool": "strip_html", "condition": "has_html" },
+    { "tool": "normalize_text", "condition": "always_true" },
+    { "tool": "truncate", "condition": "has_long_input", "params": { "max_length": 2000 } }
+  ],
+  "fallback": "deterministic"
+}

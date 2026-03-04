@@ -21,7 +21,7 @@ kerf run <workflow> [input] [--debug] [--batch]
 | Argument / Option | Description |
 |---|---|
 | `workflow` | Workflow name (matches `workflows/<name>.json`) |
-| `input` | Input text (optional — reads stdin if omitted) |
+| `input` | Input text (optional, reads stdin if omitted) |
 | `--debug` | Show debug output: tool chain execution, prompts, LLM responses |
 | `--batch` | Process JSONL input from stdin (one JSON object per line) |
 
@@ -41,7 +41,7 @@ kerf run --debug summarize "some text"
 ```
 
 ```bash
-# batch mode — one JSON result per line
+# batch mode: one JSON result per line
 echo '{"input": "text one"}
 {"input": "text two"}' | kerf run summarize --batch
 ```
@@ -94,7 +94,7 @@ kerf logs [--last N] [--workflow NAME]
 | Option | Default | Description |
 |---|---|---|
 | `--last` | `10` | Number of recent logs to show |
-| `--workflow` | — | Filter by workflow name |
+| `--workflow` | | Filter by workflow name |
 
 ## `kerf stats`
 
@@ -106,8 +106,8 @@ kerf stats [--workflow NAME] [--json]
 
 | Option | Default | Description |
 |---|---|---|
-| `--workflow` | — | Filter by workflow name |
-| `--json` | — | Output raw JSON instead of formatted text |
+| `--workflow` | | Filter by workflow name |
+| `--json` | | Output raw JSON instead of formatted text |
 
 ```bash
 kerf stats
@@ -117,11 +117,12 @@ kerf stats
 Total runs: 42
 
 Workflows:
-  summarize: 25
-  clean: 17
+  summarize: 20
+  digest: 12
+  clean: 10
 
-LLM runs: 25
-Tool-only runs: 17
+LLM runs: 32
+Tool-only runs: 10
 Fallback triggered: 3 (7.1%)
 Errors: 1
 Success rate: 97.6%
@@ -134,9 +135,9 @@ kerf stats --json
 ```json
 {
   "total_runs": 42,
-  "workflows": {"summarize": 25, "clean": 17},
-  "llm_runs": 25,
-  "tool_only_runs": 17,
+  "workflows": {"summarize": 20, "digest": 12, "clean": 10},
+  "llm_runs": 32,
+  "tool_only_runs": 10,
   "fallback_triggered": 3,
   "fallback_rate": 0.071,
   "error_count": 1,

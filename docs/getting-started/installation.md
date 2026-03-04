@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - Python 3.10+
-- [Claude CLI](https://docs.anthropic.com/en/docs/claude-code) — run `claude login` to authenticate
+- [Claude CLI](https://docs.anthropic.com/en/docs/claude-code): run `claude login` to authenticate
 - [uv](https://docs.astral.sh/uv/) (recommended) or pipx
 
 Kerf calls Claude CLI under the hood. If you see `"Claude CLI not found on PATH"`, install [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and run `claude login` to authenticate.

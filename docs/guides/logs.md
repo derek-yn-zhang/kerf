@@ -51,9 +51,9 @@ Each log file is a JSON object:
 Logs are how you move away from LLM dependence. The workflow:
 
 1. Run a workflow against real inputs
-2. Read the logs — look at what the LLM actually returned
-3. Spot the pattern — does it always do the same transformation?
+2. Read the logs. Look at what the LLM actually returned
+3. Spot the pattern. Does it always do the same transformation?
 4. Write a tool that does the same thing deterministically
-5. Remove the `task_type` from the workflow — no more LLM call
+5. Remove the `task_type` from the workflow. No more LLM call
 
 The LLM is scaffolding. The logs are how you learn to remove it.

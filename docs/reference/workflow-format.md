@@ -1,6 +1,6 @@
 # Workflow Format
 
-Workflow files live in `workflows/` and are JSON objects. They're validated with Pydantic on load — typos in `task_type`, invalid `fallback` values, or malformed `tool_chain` entries fail immediately with clear error messages.
+Workflow files live in `workflows/` and are JSON objects. They're validated with Pydantic on load. Typos in `task_type`, invalid `fallback` values, or malformed `tool_chain` entries fail immediately with clear error messages.
 
 ## Schema
 
@@ -56,7 +56,7 @@ If a template has placeholder variables (like `{categories}`) and you don't prov
 
 Type: `string | null`
 
-Path to a JSON schema file, relative to the project root. Used to validate LLM output — if required keys are missing, the fallback policy triggers.
+Path to a JSON schema file, relative to the project root. Used to validate LLM output. If required keys are missing, the fallback policy triggers.
 
 ### `tool_chain`
 
@@ -66,7 +66,7 @@ Ordered list of preprocessing steps. Each step is an object:
 
 | Field | Type | Required | Default | Description |
 |---|---|---|---|---|
-| `tool` | string | yes | — | Name of a registered tool |
+| `tool` | string | yes | - | Name of a registered tool |
 | `condition` | string | no | `"always_true"` | Name of a registered condition |
 | `params` | object | no | `{}` | Passed to the tool function as the second argument |
 

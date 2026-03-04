@@ -41,9 +41,9 @@ Use it in a workflow:
 On every workflow execution, Kerf scans `tools/` for `.py` files. Any file that defines a `register(manager)` function gets loaded. The function receives a `LocalToolManager` and calls `register_tool()` or `register_condition()` on it.
 
 - Files starting with `_` are skipped (use `_helpers.py` for shared utilities)
-- Built-in tools load first, then user tools — you can override builtins (logged as a warning)
+- Built-in tools load first, then user tools. You can override builtins (logged as a warning)
 - Files without a `register` function are warned and skipped
-- Files with syntax errors or import failures are logged and skipped — one broken file won't stop the rest from loading
+- Files with syntax errors or import failures are logged and skipped. One broken file won't stop the rest from loading
 
 ## Tool function signature
 
@@ -56,7 +56,7 @@ def my_tool(input_data, params):
 
 Tools must accept at least 2 parameters. Registration raises `TypeError` if they don't.
 
-Tools receive data from the previous step and return data for the next step. The chain is sequential — each tool's output becomes the next tool's input.
+Tools receive data from the previous step and return data for the next step. The chain is sequential. Each tool's output becomes the next tool's input.
 
 ## Writing conditions
 
