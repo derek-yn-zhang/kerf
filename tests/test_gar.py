@@ -2,7 +2,7 @@ import json
 import os
 import tempfile
 
-from ashlar.gar import GARInterface
+from kerf.gar import GARInterface
 
 
 class TestExtractJson:

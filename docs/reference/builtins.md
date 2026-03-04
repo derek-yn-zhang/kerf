@@ -1,6 +1,6 @@
 # Built-in Tools and Conditions
 
-These ship with Ashlar and are available in every project without registration.
+These ship with Kerf and are available in every project without registration.
 
 ## Tools
 

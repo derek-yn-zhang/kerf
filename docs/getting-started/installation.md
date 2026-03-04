@@ -6,45 +6,45 @@
 - [Claude CLI](https://docs.anthropic.com/en/docs/claude-code) — run `claude login` to authenticate
 - [uv](https://docs.astral.sh/uv/) (recommended) or pipx
 
-Ashlar calls Claude CLI under the hood. If you see `"Claude CLI not found on PATH"`, install [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and run `claude login` to authenticate.
+Kerf calls Claude CLI under the hood. If you see `"Claude CLI not found on PATH"`, install [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and run `claude login` to authenticate.
 
 ## Install
 
 ```bash
-uv tool install ashlar
+uv tool install kerf
 ```
 
 Or with pipx:
 
 ```bash
-pipx install ashlar
+pipx install kerf
 ```
 
 Or from source:
 
 ```bash
-git clone https://github.com/yourusername/ashlar.git
-cd ashlar
+git clone https://github.com/yourusername/kerf.git
+cd kerf
 uv tool install .
 ```
 
 Verify the installation:
 
 ```bash
-ashlar --help
+kerf --help
 ```
 
 ```
-Usage: ashlar [OPTIONS] COMMAND [ARGS]...
+Usage: kerf [OPTIONS] COMMAND [ARGS]...
 
-  Ashlar — declarative workflow engine where the LLM is a pluggable,
+  Kerf — declarative workflow engine where the LLM is a pluggable,
   disposable step.
 
 Commands:
   add    Add a new workflow, tool, or MCP config.
-  init   Scaffold a new ashlar project in the current directory.
+  init   Scaffold a new kerf project in the current directory.
   list   List available workflows and tools.
   logs   View recent execution logs.
   run    Execute a workflow.
-  serve  Start the Ashlar API server.
+  serve  Start the Kerf API server.
 ```

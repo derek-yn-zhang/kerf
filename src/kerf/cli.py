@@ -5,23 +5,23 @@ import sys
 
 import click
 
-from ashlar.config import find_project_root, get_project_paths
+from kerf.config import find_project_root, get_project_paths
 
 
 @click.group()
 def cli():
-    """Ashlar — declarative workflow engine where the LLM is a pluggable, disposable step."""
+    """Kerf — declarative workflow engine where the LLM is a pluggable, disposable step."""
     pass
 
 
 @cli.command()
 def init():
-    """Scaffold a new ashlar project in the current directory."""
-    from ashlar.scaffold import scaffold_project
+    """Scaffold a new kerf project in the current directory."""
+    from kerf.scaffold import scaffold_project
 
     try:
         scaffold_project(os.getcwd())
-        click.echo("Ashlar project initialized.")
+        click.echo("Kerf project initialized.")
     except FileExistsError as e:
         click.echo(f"Error: {e}", err=True)
         sys.exit(1)
@@ -45,7 +45,7 @@ def run(workflow, input_data, debug):
             click.echo("Error: provide input as an argument or pipe via stdin.", err=True)
             sys.exit(1)
 
-    from ashlar.engine import execute_workflow
+    from kerf.engine import execute_workflow
 
     project_dir = find_project_root()
     try:
@@ -60,7 +60,7 @@ def run(workflow, input_data, debug):
         sys.exit(1)
     except Exception as e:
         click.echo(f"Unexpected error: {e}", err=True)
-        if debug or os.environ.get("ASHLAR_DEBUG"):
+        if debug or os.environ.get("KERF_DEBUG"):
             import traceback
 
             traceback.print_exc()
@@ -71,8 +71,8 @@ def run(workflow, input_data, debug):
 @click.option("--host", default=None, help="Server host")
 @click.option("--port", default=None, type=int, help="Server port")
 def serve(host, port):
-    """Start the Ashlar API server."""
-    from ashlar.server import run_server
+    """Start the Kerf API server."""
+    from kerf.server import run_server
 
     run_server(host=host, port=port)
 
@@ -87,7 +87,7 @@ def add():
 @click.argument("name")
 def add_workflow(name):
     """Scaffold a new workflow JSON file."""
-    from ashlar.scaffold import scaffold_workflow
+    from kerf.scaffold import scaffold_workflow
 
     project_dir = find_project_root()
     try:
@@ -102,7 +102,7 @@ def add_workflow(name):
 @click.argument("name")
 def add_tool(name):
     """Scaffold a new deterministic tool."""
-    from ashlar.scaffold import scaffold_tool
+    from kerf.scaffold import scaffold_tool
 
     project_dir = find_project_root()
     try:
@@ -117,7 +117,7 @@ def add_tool(name):
 @click.argument("name")
 def add_mcp(name):
     """Add an MCP server entry to mcp.json."""
-    from ashlar.scaffold import scaffold_mcp
+    from kerf.scaffold import scaffold_mcp
 
     project_dir = find_project_root()
     try:

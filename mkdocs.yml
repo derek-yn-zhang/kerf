@@ -1,7 +1,7 @@
-site_name: Ashlar
+site_name: Kerf
 site_description: Declarative workflow engine for Claude CLI
-site_url: https://derek-yn-zhang.github.io/ashlar/
-repo_url: https://github.com/derek-yn-zhang/ashlar
+site_url: https://derek-yn-zhang.github.io/kerf/
+repo_url: https://github.com/derek-yn-zhang/kerf
 
 theme:
   name: material

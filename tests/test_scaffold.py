@@ -4,19 +4,19 @@ import tempfile
 
 import pytest
 
-from ashlar.scaffold import scaffold_mcp, scaffold_project, scaffold_tool, scaffold_workflow
+from kerf.scaffold import scaffold_mcp, scaffold_project, scaffold_tool, scaffold_workflow
 
 
 class TestScaffoldProject:
     def test_creates_structure(self):
         with tempfile.TemporaryDirectory() as d:
             scaffold_project(d)
-            assert os.path.exists(os.path.join(d, ".ashlar"))
+            assert os.path.exists(os.path.join(d, ".kerf"))
             assert os.path.isdir(os.path.join(d, "workflows"))
             assert os.path.isdir(os.path.join(d, "tools"))
             assert os.path.isdir(os.path.join(d, "schemas"))
             assert os.path.isdir(os.path.join(d, "logs"))
-            assert os.path.exists(os.path.join(d, "ashlar.toml"))
+            assert os.path.exists(os.path.join(d, "kerf.toml"))
 
     def test_creates_example_workflows(self):
         with tempfile.TemporaryDirectory() as d:

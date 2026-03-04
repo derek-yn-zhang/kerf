@@ -1,10 +1,10 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
-from ashlar.config import find_project_root, load_project_config
-from ashlar.engine import execute_workflow
+from kerf.config import find_project_root, load_project_config
+from kerf.engine import execute_workflow
 
-app = FastAPI(title="Ashlar")
+app = FastAPI(title="Kerf")
 
 
 class WorkflowRequest(BaseModel):

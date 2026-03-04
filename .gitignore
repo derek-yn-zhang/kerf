@@ -23,6 +23,6 @@ uv.lock
 .coverage
 htmlcov/
 
-# Ashlar project artifacts (for testing)
+# Kerf project artifacts (for testing)
 logs/
-.ashlar
+.kerf

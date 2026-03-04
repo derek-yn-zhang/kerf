@@ -1,21 +1,21 @@
 # CLI Commands
 
-## `ashlar init`
+## `kerf init`
 
 Scaffold a new project in the current directory.
 
 ```bash
-ashlar init
+kerf init
 ```
 
-Creates `.ashlar`, `workflows/`, `schemas/`, `tools/`, `logs/`, and `ashlar.toml`. Fails if `.ashlar` already exists.
+Creates `.kerf`, `workflows/`, `schemas/`, `tools/`, `logs/`, and `kerf.toml`. Fails if `.kerf` already exists.
 
-## `ashlar run`
+## `kerf run`
 
 Execute a workflow.
 
 ```bash
-ashlar run <workflow> [input] [--debug]
+kerf run <workflow> [input] [--debug]
 ```
 
 | Argument / Option | Description |
@@ -26,26 +26,26 @@ ashlar run <workflow> [input] [--debug]
 
 ```bash
 # argument
-ashlar run summarize "some text"
+kerf run summarize "some text"
 
 # stdin
-cat file.txt | ashlar run summarize
-echo "some text" | ashlar run summarize
+cat file.txt | kerf run summarize
+echo "some text" | kerf run summarize
 
 # debug mode — see what's happening under the hood
-ashlar run --debug summarize "some text"
+kerf run --debug summarize "some text"
 ```
 
 Prints JSON result to stdout. With `--debug`, also prints the full execution trace to stderr.
 
-Set `ASHLAR_DEBUG=1` to always show tracebacks on errors.
+Set `KERF_DEBUG=1` to always show tracebacks on errors.
 
-## `ashlar serve`
+## `kerf serve`
 
 Start the API server.
 
 ```bash
-ashlar serve [--host HOST] [--port PORT]
+kerf serve [--host HOST] [--port PORT]
 ```
 
 | Option | Default | Description |
@@ -53,32 +53,32 @@ ashlar serve [--host HOST] [--port PORT]
 | `--host` | `0.0.0.0` | Server host |
 | `--port` | `8000` | Server port |
 
-## `ashlar add`
+## `kerf add`
 
 Scaffold new resources.
 
 ```bash
-ashlar add workflow <name>    # creates workflows/<name>.json
-ashlar add tool <name>        # creates tools/<name>.py
-ashlar add mcp <name>         # adds MCP server entry to mcp.json
+kerf add workflow <name>    # creates workflows/<name>.json
+kerf add tool <name>        # creates tools/<name>.py
+kerf add mcp <name>         # adds MCP server entry to mcp.json
 ```
 
-Fails if the resource already exists. `ashlar add mcp` creates or appends to `mcp.json` in Claude CLI's native config format.
+Fails if the resource already exists. `kerf add mcp` creates or appends to `mcp.json` in Claude CLI's native config format.
 
-## `ashlar list`
+## `kerf list`
 
 Show available workflows and tools in the current project.
 
 ```bash
-ashlar list
+kerf list
 ```
 
-## `ashlar logs`
+## `kerf logs`
 
 View recent execution logs.
 
 ```bash
-ashlar logs [--last N] [--workflow NAME]
+kerf logs [--last N] [--workflow NAME]
 ```
 
 | Option | Default | Description |

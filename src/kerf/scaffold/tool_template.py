@@ -1,4 +1,4 @@
-"""Ashlar tool: TOOL_NAME"""
+"""Kerf tool: TOOL_NAME"""
 
 
 def tool_name(input_data, params):

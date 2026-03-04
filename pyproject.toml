@@ -1,5 +1,5 @@
 [project]
-name = "ashlar"
+name = "kerf"
 version = "0.1.0"
 description = "Declarative workflow engine where the LLM is a pluggable, disposable step"
 readme = "README.md"
@@ -17,14 +17,14 @@ dependencies = [
 ]
 
 [project.scripts]
-ashlar = "ashlar.cli:cli"
+kerf = "kerf.cli:cli"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/ashlar"]
+packages = ["src/kerf"]
 
 [tool.uv]
 dev-dependencies = [

@@ -1,7 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from ashlar.models import AshlarConfig, ToolChainStep, WorkflowConfig
+from kerf.models import KerfConfig, ToolChainStep, WorkflowConfig
 
 
 class TestWorkflowConfig:
@@ -56,15 +56,15 @@ class TestToolChainStep:
         assert step.params["key"] == "val"
 
 
-class TestAshlarConfig:
+class TestKerfConfig:
     def test_defaults(self):
-        cfg = AshlarConfig()
+        cfg = KerfConfig()
         assert cfg.server.host == "0.0.0.0"
         assert cfg.server.port == 8000
         assert cfg.defaults.fallback == "retry"
 
     def test_override(self):
-        cfg = AshlarConfig(
+        cfg = KerfConfig(
             server={"host": "localhost", "port": 9000},
             defaults={"fallback": "flag"},
         )

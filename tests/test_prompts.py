@@ -1,4 +1,4 @@
-from ashlar.prompts import construct_prompt
+from kerf.prompts import construct_prompt
 
 
 class TestConstructPrompt:

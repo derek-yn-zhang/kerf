@@ -1,17 +1,17 @@
-# Ashlar
+# Kerf
 
 Declarative workflow engine for Claude CLI. Deterministic tools run first, the LLM handles reasoning when needed, everything gets logged.
 
 ```bash
-uv tool install ashlar
-ashlar init && ashlar run summarize "Your text here..."
+uv tool install kerf
+kerf init && kerf run summarize "Your text here..."
 ```
 
 ## Get Started
 
-- [Installation](getting-started/installation.md) — install Ashlar and prerequisites
+- [Installation](getting-started/installation.md) — install Kerf and prerequisites
 - [Quickstart](getting-started/quickstart.md) — scaffold a project, run a workflow, see the output
-- [Project Structure](getting-started/project-structure.md) — what `ashlar init` creates and why
+- [Project Structure](getting-started/project-structure.md) — what `kerf init` creates and why
 
 ## Guides
 
@@ -32,6 +32,6 @@ ashlar init && ashlar run summarize "Your text here..."
 - [CLI Commands](reference/cli.md) — every command, flag, and option
 - [Workflow Format](reference/workflow-format.md) — JSON schema for workflow files
 - [Tool API](reference/tool-api.md) — function signatures, conditions, registration
-- [Built-ins](reference/builtins.md) — tools and conditions that ship with Ashlar
-- [Configuration](reference/configuration.md) — `ashlar.toml` and project settings
+- [Built-ins](reference/builtins.md) — tools and conditions that ship with Kerf
+- [Configuration](reference/configuration.md) — `kerf.toml` and project settings
 - [Server API](reference/server-api.md) — HTTP endpoints

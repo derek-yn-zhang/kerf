@@ -1,10 +1,10 @@
 # Project Structure
 
-After running `ashlar init`, your project looks like this:
+After running `kerf init`, your project looks like this:
 
 ```
 my-pipeline/
-  .ashlar                  # project marker
+  .kerf                  # project marker
   workflows/
     summarize.json         # summarization example
     classify.json          # classification example
@@ -12,7 +12,7 @@ my-pipeline/
   schemas/
   tools/                   # your custom tool files go here
   logs/
-  ashlar.toml              # project config
+  kerf.toml              # project config
 ```
 
 ## Directories
@@ -27,9 +27,9 @@ my-pipeline/
 
 ## Files
 
-**`.ashlar`** — Marker file that identifies the project root. Ashlar walks up from your current directory looking for this file (like `.git`), so you can run commands from subdirectories.
+**`.kerf`** — Marker file that identifies the project root. Kerf walks up from your current directory looking for this file (like `.git`), so you can run commands from subdirectories.
 
-**`ashlar.toml`** — Optional project-level configuration:
+**`kerf.toml`** — Optional project-level configuration:
 
 ```toml
 # [server]

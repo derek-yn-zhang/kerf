@@ -4,7 +4,7 @@ import logging
 import os
 from typing import Any, Callable, Dict, List
 
-logger = logging.getLogger("ashlar")
+logger = logging.getLogger("kerf")
 
 
 class LocalToolManager:
@@ -69,7 +69,7 @@ class LocalToolManager:
             filepath = os.path.join(tools_dir, filename)
             try:
                 spec = importlib.util.spec_from_file_location(
-                    f"ashlar_user_tools.{filename[:-3]}", filepath
+                    f"kerf_user_tools.{filename[:-3]}", filepath
                 )
                 module = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(module)

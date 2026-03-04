@@ -1,17 +1,17 @@
 # Using the API Server
 
-Ashlar includes a FastAPI server for running workflows over HTTP.
+Kerf includes a FastAPI server for running workflows over HTTP.
 
 ## Start the server
 
 ```bash
-ashlar serve
+kerf serve
 ```
 
 Custom host and port:
 
 ```bash
-ashlar serve --host 127.0.0.1 --port 3000
+kerf serve --host 127.0.0.1 --port 3000
 ```
 
 ## Execute a workflow
@@ -54,6 +54,6 @@ If the workflow doesn't exist, you get a 404:
 
 ## When to use the server vs CLI
 
-Use `ashlar serve` when you want to call workflows from other services, integrate with existing APIs, or run workflows from non-Python code. Use `ashlar run` for scripting, testing, and one-off executions.
+Use `kerf serve` when you want to call workflows from other services, integrate with existing APIs, or run workflows from non-Python code. Use `kerf run` for scripting, testing, and one-off executions.
 
 Both call the same engine — results are identical.

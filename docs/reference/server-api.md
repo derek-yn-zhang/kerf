@@ -1,6 +1,6 @@
 # Server API
 
-The Ashlar server exposes a single endpoint.
+The Kerf server exposes a single endpoint.
 
 ## `POST /execute`
 

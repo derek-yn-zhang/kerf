@@ -84,4 +84,4 @@ What to do when the LLM call fails or schema validation fails.
 | `"deterministic"` | Return the preprocessed output (skip LLM) |
 | `"flag"` | Return the error in the output for manual review |
 
-Defaults to the `fallback` value in `ashlar.toml` (which defaults to `"retry"` if not set). Only these three values are accepted.
+Defaults to the `fallback` value in `kerf.toml` (which defaults to `"retry"` if not set). Only these three values are accepted.

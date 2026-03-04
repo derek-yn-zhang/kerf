@@ -4,14 +4,14 @@ import logging
 import os
 import uuid
 
-from ashlar.builtins import register_builtins
-from ashlar.config import get_project_paths, load_project_config
-from ashlar.gar import GARInterface
-from ashlar.models import WorkflowConfig
-from ashlar.prompts import construct_prompt
-from ashlar.tools import LocalToolManager
+from kerf.builtins import register_builtins
+from kerf.config import get_project_paths, load_project_config
+from kerf.gar import GARInterface
+from kerf.models import WorkflowConfig
+from kerf.prompts import construct_prompt
+from kerf.tools import LocalToolManager
 
-logger = logging.getLogger("ashlar")
+logger = logging.getLogger("kerf")
 
 
 def execute_workflow(

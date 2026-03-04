@@ -1,21 +1,21 @@
 import os
 import tempfile
 
-from ashlar.config import find_project_root, get_project_paths, load_project_config
+from kerf.config import find_project_root, get_project_paths, load_project_config
 
 
 class TestFindProjectRoot:
     def test_finds_marker(self):
         with tempfile.TemporaryDirectory() as d:
             d = os.path.realpath(d)
-            marker = os.path.join(d, ".ashlar")
+            marker = os.path.join(d, ".kerf")
             open(marker, "w").close()
             assert find_project_root(d) == d
 
     def test_walks_up(self):
         with tempfile.TemporaryDirectory() as d:
             d = os.path.realpath(d)
-            marker = os.path.join(d, ".ashlar")
+            marker = os.path.join(d, ".kerf")
             open(marker, "w").close()
             subdir = os.path.join(d, "nested", "deep")
             os.makedirs(subdir)
@@ -23,7 +23,7 @@ class TestFindProjectRoot:
 
     def test_falls_back_to_start(self):
         with tempfile.TemporaryDirectory() as d:
-            # No .ashlar marker
+            # No .kerf marker
             result = find_project_root(d)
             assert result == os.path.realpath(d)
 
@@ -35,7 +35,7 @@ class TestGetProjectPaths:
         assert paths["tools"] == "/fake/project/tools"
         assert paths["logs"] == "/fake/project/logs"
         assert paths["schemas"] == "/fake/project/schemas"
-        assert paths["config"] == "/fake/project/ashlar.toml"
+        assert paths["config"] == "/fake/project/kerf.toml"
         assert paths["mcp"] == "/fake/project/mcp.json"
 
 
@@ -49,7 +49,7 @@ class TestLoadProjectConfig:
 
     def test_valid_config(self):
         with tempfile.TemporaryDirectory() as d:
-            config_path = os.path.join(d, "ashlar.toml")
+            config_path = os.path.join(d, "kerf.toml")
             with open(config_path, "w") as f:
                 f.write('[server]\nhost = "localhost"\nport = 9000\n')
             config = load_project_config(d)
@@ -58,7 +58,7 @@ class TestLoadProjectConfig:
 
     def test_invalid_config_returns_defaults(self):
         with tempfile.TemporaryDirectory() as d:
-            config_path = os.path.join(d, "ashlar.toml")
+            config_path = os.path.join(d, "kerf.toml")
             with open(config_path, "w") as f:
                 f.write("this is not valid toml [[[")
             config = load_project_config(d)

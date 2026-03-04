@@ -5,7 +5,7 @@ Every workflow execution creates a log file in `logs/`. Each file is named with 
 ## View recent logs
 
 ```bash
-ashlar logs
+kerf logs
 ```
 
 ```json
@@ -25,9 +25,9 @@ ashlar logs
 ## Filter and limit
 
 ```bash
-ashlar logs --last 5                  # show 5 most recent
-ashlar logs --workflow summarize      # filter by workflow name
-ashlar logs --last 3 --workflow classify
+kerf logs --last 5                  # show 5 most recent
+kerf logs --workflow summarize      # filter by workflow name
+kerf logs --last 3 --workflow classify
 ```
 
 ## Log format

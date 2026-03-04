@@ -1,6 +1,6 @@
 # How the Engine Works
 
-Ashlar is a thin orchestration layer over the Claude CLI. It doesn't embed a model, manage API keys, or do anything clever with tokens. It wraps `claude -p --output-format json` in a structured pipeline and adds the scaffolding to make LLM calls reproducible, validatable, and replaceable.
+Kerf is a thin orchestration layer over the Claude CLI. It doesn't embed a model, manage API keys, or do anything clever with tokens. It wraps `claude -p --output-format json` in a structured pipeline and adds the scaffolding to make LLM calls reproducible, validatable, and replaceable.
 
 ## Pipeline
 
@@ -35,11 +35,11 @@ result (LLM output or tool output)
 
 ## Components
 
-**GARInterface** wraps the Claude CLI's headless mode (GAR = Generate, Analyze, Return). It checks that `claude` is on your PATH, calls `claude -p <prompt> --output-format json`, and parses the JSON response. Claude CLI handles its own authentication — Ashlar doesn't manage credentials.
+**GARInterface** wraps the Claude CLI's headless mode (GAR = Generate, Analyze, Return). It checks that `claude` is on your PATH, calls `claude -p <prompt> --output-format json`, and parses the JSON response. Claude CLI handles its own authentication — Kerf doesn't manage credentials.
 
 **LocalToolManager** is a registry for deterministic tools and named conditions. Tools and conditions are registered by name (strings), not as lambdas. The workflow JSON references these names, and the manager resolves them at runtime. This is what keeps workflows fully serializable.
 
-**Engine** is the `execute_workflow()` function that ties it together. Both `ashlar run` and `POST /execute` call the same function — there's no separate CLI vs server path.
+**Engine** is the `execute_workflow()` function that ties it together. Both `kerf run` and `POST /execute` call the same function — there's no separate CLI vs server path.
 
 ## Tool resolution order
 
@@ -49,4 +49,4 @@ result (LLM output or tool output)
 
 ## Project detection
 
-Ashlar walks up from the current working directory looking for a `.ashlar` marker file, the same way git looks for `.git/`. This means you can run `ashlar run` from any subdirectory of your project.
+Kerf walks up from the current working directory looking for a `.kerf` marker file, the same way git looks for `.git/`. This means you can run `kerf run` from any subdirectory of your project.

@@ -4,7 +4,7 @@ This walks through scaffolding a project, running a workflow, and reading the ou
 
 ## Prerequisites
 
-Ashlar calls [Claude Code](https://docs.anthropic.com/en/docs/claude-code) under the hood. Make sure it's installed and authenticated:
+Kerf calls [Claude Code](https://docs.anthropic.com/en/docs/claude-code) under the hood. Make sure it's installed and authenticated:
 
 ```bash
 claude --version
@@ -16,13 +16,13 @@ If that fails, [install Claude Code](https://docs.anthropic.com/en/docs/claude-c
 claude login
 ```
 
-If `ashlar run` fails with `"Claude CLI not found on PATH"`, you need to install Claude Code first.
+If `kerf run` fails with `"Claude CLI not found on PATH"`, you need to install Claude Code first.
 
 ## Create a project
 
 ```bash
 mkdir my-pipeline && cd my-pipeline
-ashlar init
+kerf init
 ```
 
 This creates the standard project structure with three example workflows. See [Project Structure](project-structure.md) for details.
@@ -32,7 +32,7 @@ This creates the standard project structure with three example workflows. See [P
 The scaffolded project includes `summarize`, `classify`, and `extract` workflows:
 
 ```bash
-ashlar run summarize "The quarterly earnings report showed revenue growth of 15%, driven by enterprise expansion and strong retention."
+kerf run summarize "The quarterly earnings report showed revenue growth of 15%, driven by enterprise expansion and strong retention."
 ```
 
 ```json
@@ -42,7 +42,7 @@ ashlar run summarize "The quarterly earnings report showed revenue growth of 15%
 ```
 
 ```bash
-ashlar run classify "The login page crashes when I enter my email with a + sign"
+kerf run classify "The login page crashes when I enter my email with a + sign"
 ```
 
 ```json
@@ -53,7 +53,7 @@ ashlar run classify "The login page crashes when I enter my email with a + sign"
 ```
 
 ```bash
-ashlar run extract "Hi, I'm Sarah Chen (sarah@acme.co), VP of Engineering at Acme Corp."
+kerf run extract "Hi, I'm Sarah Chen (sarah@acme.co), VP of Engineering at Acme Corp."
 ```
 
 ```json
@@ -68,13 +68,13 @@ ashlar run extract "Hi, I'm Sarah Chen (sarah@acme.co), VP of Engineering at Acm
 You can also pipe input from stdin:
 
 ```bash
-cat article.txt | ashlar run summarize
+cat article.txt | kerf run summarize
 ```
 
 ## Check the logs
 
 ```bash
-ashlar logs --last 1
+kerf logs --last 1
 ```
 
 ```json

@@ -5,21 +5,21 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from ashlar.engine import execute_workflow
+from kerf.engine import execute_workflow
 
 
 def _setup_project(tmpdir, workflow_name, workflow_config):
-    """Create a minimal ashlar project with one workflow."""
+    """Create a minimal kerf project with one workflow."""
     os.makedirs(os.path.join(tmpdir, "workflows"))
     os.makedirs(os.path.join(tmpdir, "tools"))
     os.makedirs(os.path.join(tmpdir, "logs"))
     os.makedirs(os.path.join(tmpdir, "schemas"))
 
-    # .ashlar marker
-    open(os.path.join(tmpdir, ".ashlar"), "w").close()
+    # .kerf marker
+    open(os.path.join(tmpdir, ".kerf"), "w").close()
 
-    # ashlar.toml
-    with open(os.path.join(tmpdir, "ashlar.toml"), "w") as f:
+    # kerf.toml
+    with open(os.path.join(tmpdir, "kerf.toml"), "w") as f:
         f.write('[defaults]\nfallback = "retry"\n')
 
     # Workflow
@@ -51,7 +51,7 @@ class TestExecuteWorkflow:
             result = execute_workflow("passthrough", "raw input", d)
             assert result == {"output": "raw input"}
 
-    @patch("ashlar.engine.GARInterface")
+    @patch("kerf.engine.GARInterface")
     def test_llm_workflow(self, mock_gar_cls):
         """Workflow with task_type calls the LLM."""
         mock_gar = MagicMock()
@@ -69,7 +69,7 @@ class TestExecuteWorkflow:
             assert result == {"summary": "test summary"}
             mock_gar.call_gar.assert_called_once()
 
-    @patch("ashlar.engine.GARInterface")
+    @patch("kerf.engine.GARInterface")
     def test_template_params_passed(self, mock_gar_cls):
         """template_params are forwarded to construct_prompt."""
         mock_gar = MagicMock()
@@ -88,7 +88,7 @@ class TestExecuteWorkflow:
             prompt_arg = mock_gar.call_gar.call_args[0][0]
             assert "bug, feature" in prompt_arg
 
-    @patch("ashlar.engine.GARInterface")
+    @patch("kerf.engine.GARInterface")
     def test_retry_fallback(self, mock_gar_cls):
         """Retry fallback retries once then returns error."""
         mock_gar = MagicMock()
@@ -106,7 +106,7 @@ class TestExecuteWorkflow:
             assert "LLM down" in result["error"]
             assert mock_gar.call_gar.call_count == 2
 
-    @patch("ashlar.engine.GARInterface")
+    @patch("kerf.engine.GARInterface")
     def test_deterministic_fallback(self, mock_gar_cls):
         """Deterministic fallback returns preprocessed input."""
         mock_gar = MagicMock()
@@ -124,7 +124,7 @@ class TestExecuteWorkflow:
             result = execute_workflow("summarize", "  raw  input  ", d)
             assert result == {"fallback_output": "raw input"}
 
-    @patch("ashlar.engine.GARInterface")
+    @patch("kerf.engine.GARInterface")
     def test_flag_fallback(self, mock_gar_cls):
         """Flag fallback returns error with flagged=True."""
         mock_gar = MagicMock()
@@ -151,8 +151,8 @@ class TestExecuteWorkflow:
         with tempfile.TemporaryDirectory() as d:
             os.makedirs(os.path.join(d, "workflows"))
             os.makedirs(os.path.join(d, "logs"))
-            open(os.path.join(d, ".ashlar"), "w").close()
-            with open(os.path.join(d, "ashlar.toml"), "w") as f:
+            open(os.path.join(d, ".kerf"), "w").close()
+            with open(os.path.join(d, "kerf.toml"), "w") as f:
                 f.write('[defaults]\nfallback = "retry"\n')
             with open(os.path.join(d, "workflows", "bad.json"), "w") as f:
                 f.write("not json{{{")
@@ -165,7 +165,7 @@ class TestExecuteWorkflow:
             with pytest.raises(ValueError, match="Unknown task_type"):
                 execute_workflow("bad", "test", d)
 
-    @patch("ashlar.engine.GARInterface")
+    @patch("kerf.engine.GARInterface")
     def test_log_written(self, mock_gar_cls):
         """Every execution writes a log file."""
         mock_gar = MagicMock()
@@ -188,13 +188,13 @@ class TestExecuteWorkflow:
             assert log["result"] == {"summary": "ok"}
 
     def test_project_default_fallback_applied(self):
-        """Workflow without fallback inherits from ashlar.toml."""
+        """Workflow without fallback inherits from kerf.toml."""
         with tempfile.TemporaryDirectory() as d:
             os.makedirs(os.path.join(d, "workflows"))
             os.makedirs(os.path.join(d, "tools"))
             os.makedirs(os.path.join(d, "logs"))
-            open(os.path.join(d, ".ashlar"), "w").close()
-            with open(os.path.join(d, "ashlar.toml"), "w") as f:
+            open(os.path.join(d, ".kerf"), "w").close()
+            with open(os.path.join(d, "kerf.toml"), "w") as f:
                 f.write('[defaults]\nfallback = "flag"\n')
             # Workflow omits fallback
             with open(os.path.join(d, "workflows", "test.json"), "w") as f:

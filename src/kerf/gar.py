@@ -6,7 +6,7 @@ import shutil
 import subprocess
 from typing import Any, Dict, Optional
 
-logger = logging.getLogger("ashlar")
+logger = logging.getLogger("kerf")
 
 
 class GARInterface:

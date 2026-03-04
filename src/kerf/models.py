@@ -28,7 +28,7 @@ class WorkflowConfig(BaseModel):
         return v
 
 
-class AshlarConfig(BaseModel):
+class KerfConfig(BaseModel):
     class ServerConfig(BaseModel):
         host: str = "0.0.0.0"
         port: int = 8000

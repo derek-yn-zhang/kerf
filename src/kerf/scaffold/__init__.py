@@ -4,15 +4,15 @@ from importlib import resources
 
 
 def _read_template(filename: str) -> str:
-    return resources.files("ashlar.scaffold").joinpath(filename).read_text()
+    return resources.files("kerf.scaffold").joinpath(filename).read_text()
 
 
 def scaffold_project(target_dir: str):
-    """Create the full ashlar project structure in target_dir."""
+    """Create the full kerf project structure in target_dir."""
     # Marker file
-    marker = os.path.join(target_dir, ".ashlar")
+    marker = os.path.join(target_dir, ".kerf")
     if os.path.exists(marker):
-        raise FileExistsError("Ashlar project already initialized here.")
+        raise FileExistsError("Kerf project already initialized here.")
     with open(marker, "w") as f:
         f.write("")
 
@@ -37,10 +37,10 @@ def scaffold_project(target_dir: str):
             f.write("")
 
     # Optional config
-    config_path = os.path.join(target_dir, "ashlar.toml")
+    config_path = os.path.join(target_dir, "kerf.toml")
     with open(config_path, "w") as f:
         f.write(
-            "# Ashlar project configuration\n"
+            "# Kerf project configuration\n"
             "\n"
             "# [server]\n"
             '# host = "0.0.0.0"\n'

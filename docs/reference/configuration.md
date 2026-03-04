@@ -1,8 +1,8 @@
 # Configuration
 
-## `ashlar.toml`
+## `kerf.toml`
 
-Optional project-level config file created by `ashlar init`.
+Optional project-level config file created by `kerf init`.
 
 ```toml
 [server]
@@ -26,14 +26,14 @@ fallback = "retry"
 |---|---|---|---|
 | `fallback` | string | `"retry"` | Default fallback policy for workflows that don't specify one |
 
-If `ashlar.toml` is missing, all defaults apply. If it has a parse error, Ashlar warns and falls back to defaults.
+If `kerf.toml` is missing, all defaults apply. If it has a parse error, Kerf warns and falls back to defaults.
 
 !!! note "Python 3.10"
     Python 3.10 needs the `tomli` package to parse TOML (included automatically as a dependency). Python 3.11+ uses the built-in `tomllib`.
 
 ## `mcp.json`
 
-Optional MCP server configuration. When present, Ashlar passes `--mcp-config mcp.json` to Claude CLI calls, giving the LLM access to external tools during reasoning.
+Optional MCP server configuration. When present, Kerf passes `--mcp-config mcp.json` to Claude CLI calls, giving the LLM access to external tools during reasoning.
 
 ```json
 {
@@ -47,10 +47,10 @@ Optional MCP server configuration. When present, Ashlar passes `--mcp-config mcp
 }
 ```
 
-Manage entries with `ashlar add mcp <name>`. See [Using MCP Servers](../guides/mcp.md) for details.
+Manage entries with `kerf add mcp <name>`. See [Using MCP Servers](../guides/mcp.md) for details.
 
 ## Project detection
 
-Ashlar finds your project root by walking up from the current directory looking for a `.ashlar` marker file. This works the same way git finds `.git/` — you can run `ashlar` commands from any subdirectory.
+Kerf finds your project root by walking up from the current directory looking for a `.kerf` marker file. This works the same way git finds `.git/` — you can run `kerf` commands from any subdirectory.
 
-If no `.ashlar` file is found, Ashlar uses the current directory as the project root.
+If no `.kerf` file is found, Kerf uses the current directory as the project root.

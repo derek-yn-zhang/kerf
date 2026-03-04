@@ -2,7 +2,7 @@
 
 ## Why subprocess, not SDK?
 
-Ashlar shells out to the Claude CLI (`claude -p`) rather than using Anthropic's Python SDK. This means:
+Kerf shells out to the Claude CLI (`claude -p`) rather than using Anthropic's Python SDK. This means:
 
 - It works with whatever authentication the CLI provides, including Max Plan
 - No API keys to manage
@@ -34,7 +34,7 @@ Python workflow definitions would be more expressive, but JSON workflows are:
 
 - Editable by anyone, even people who don't write Python
 - Serializable and transferable — you can store them in a database, send them over HTTP, version them in git
-- Inspectable — `ashlar list` can read them without importing any code
+- Inspectable — `kerf list` can read them without importing any code
 - Constrained — they can't do anything surprising
 
 The tool chain is where Python lives. The workflow file is where configuration lives. Keeping them separate means you can change pipeline behavior without touching code.

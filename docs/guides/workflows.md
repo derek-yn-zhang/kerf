@@ -5,7 +5,7 @@ Workflows are JSON files in `workflows/`. Each one defines a pipeline — what t
 ## Create a workflow
 
 ```bash
-ashlar add workflow classify
+kerf add workflow classify
 ```
 
 This creates a template you can edit:
@@ -39,7 +39,7 @@ The `template_params` fill in the prompt template — here, `{categories}` gets 
 Run it:
 
 ```bash
-ashlar run classify "urgent: server is down and customers can't log in"
+kerf run classify "urgent: server is down and customers can't log in"
 ```
 
 ```json

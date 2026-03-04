@@ -1,17 +1,11 @@
 <p align="center">
-  <strong>Ashlar</strong><br>
+  <strong>Kerf</strong><br>
   Declarative workflow engine for Claude CLI
-</p>
-
-<p align="center">
-  <a href="https://pypi.org/project/ashlar/"><img src="https://img.shields.io/pypi/v/ashlar" alt="PyPI"></a>
-  <a href="https://pypi.org/project/ashlar/"><img src="https://img.shields.io/pypi/pyversions/ashlar" alt="Python"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/pypi/l/ashlar" alt="License"></a>
 </p>
 
 ---
 
-Ashlar runs deterministic tools first, calls the LLM only when you need reasoning, and logs every result. Pipelines are defined as JSON — no Python required to configure a workflow.
+Kerf runs deterministic tools first, calls the LLM only when you need reasoning, and logs every result. Pipelines are defined as JSON — no Python required to configure a workflow.
 
 - **Deterministic-first** — preprocessing runs without the LLM until you actually need it
 - **JSON workflows** — define tool chains, prompt templates, and fallback policies as config
@@ -22,7 +16,7 @@ Ashlar runs deterministic tools first, calls the LLM only when you need reasonin
 ## Install
 
 ```bash
-uv tool install ashlar
+uv tool install git+https://github.com/derek-yn-zhang/kerf.git
 ```
 
 Requires Python 3.10+ and Claude CLI (`claude login`).
@@ -30,23 +24,20 @@ Requires Python 3.10+ and Claude CLI (`claude login`).
 ## Quick Start
 
 ```bash
-ashlar init
+kerf init
 ```
 
 ```
-Ashlar project initialized.
+Kerf project initialized.
 ```
 
 ```bash
-ashlar run summarize "Ashlar is a workflow engine that wraps Claude CLI..."
+kerf run summarize "Kerf is a workflow engine that wraps Claude CLI..."
 ```
 
 ```json
 {
-  "deterministic_output": "ashlar is a workflow engine that wraps claude cli...",
-  "llm_output": {
-    "summary": "Ashlar is a declarative workflow engine..."
-  }
+  "summary": "Kerf is a declarative workflow engine that wraps Claude CLI for structured, deterministic text processing."
 }
 ```
 
@@ -75,7 +66,7 @@ def register(manager):
 
 ## Documentation
 
-Full docs at [derek-yn-zhang.github.io/ashlar](https://derek-yn-zhang.github.io/ashlar/).
+Full docs at [derek-yn-zhang.github.io/kerf](https://derek-yn-zhang.github.io/kerf/).
 
 ## License
 

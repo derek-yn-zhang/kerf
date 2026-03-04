@@ -5,7 +5,7 @@ Tools are deterministic Python functions that run before (or instead of) the LLM
 ## Create a tool
 
 ```bash
-ashlar add tool strip-html
+kerf add tool strip-html
 ```
 
 Edit the generated file:
@@ -21,7 +21,7 @@ def register(manager):
     manager.register_tool("strip-html", strip_html)
 ```
 
-The file name can use hyphens, and so can the registered tool name. The Python function name uses underscores (since hyphens aren't valid in Python identifiers). `ashlar add tool` handles this automatically.
+The file name can use hyphens, and so can the registered tool name. The Python function name uses underscores (since hyphens aren't valid in Python identifiers). `kerf add tool` handles this automatically.
 
 Use it in a workflow:
 
@@ -38,7 +38,7 @@ Use it in a workflow:
 
 ## How discovery works
 
-On every workflow execution, Ashlar scans `tools/` for `.py` files. Any file that defines a `register(manager)` function gets loaded. The function receives a `LocalToolManager` and calls `register_tool()` or `register_condition()` on it.
+On every workflow execution, Kerf scans `tools/` for `.py` files. Any file that defines a `register(manager)` function gets loaded. The function receives a `LocalToolManager` and calls `register_tool()` or `register_condition()` on it.
 
 - Files starting with `_` are skipped (use `_helpers.py` for shared utilities)
 - Built-in tools load first, then user tools — you can override builtins (logged as a warning)
@@ -98,4 +98,4 @@ def register(manager):
     manager.register_tool("sentiment_score", sentiment_score)
 ```
 
-Make sure the library is installed in the same environment as Ashlar.
+Make sure the library is installed in the same environment as Kerf.
