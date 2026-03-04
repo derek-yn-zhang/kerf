@@ -30,10 +30,18 @@ Requires Python 3.10+ and Claude CLI (`claude login`).
 ## Quick Start
 
 ```bash
-$ ashlar init
-Ashlar project initialized.
+ashlar init
+```
 
-$ ashlar run summarize "Ashlar is a workflow engine that wraps Claude CLI..."
+```
+Ashlar project initialized.
+```
+
+```bash
+ashlar run summarize "Ashlar is a workflow engine that wraps Claude CLI..."
+```
+
+```json
 {
   "deterministic_output": "ashlar is a workflow engine that wraps claude cli...",
   "llm_output": {
@@ -67,7 +75,7 @@ def register(manager):
 
 ## Documentation
 
-Full docs covering workflows, tools, architecture, and CLI reference at [ashlar.dev](docs/).
+Full docs at [derek-yn-zhang.github.io/ashlar](https://derek-yn-zhang.github.io/ashlar/).
 
 ## License
 
